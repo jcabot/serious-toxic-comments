@@ -54,7 +54,7 @@ class Serious_Toxic_Comments {
 
 		$this->load_dependencies();
 		$this->set_locale();
-		$this->define_admin_hooks();
+		$this->define_public_hooks();
 
 	}
 
@@ -87,13 +87,12 @@ class Serious_Toxic_Comments {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-serious-toxic-comments-i18n.php';
 
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-serious-toxic-comments-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-serious-toxic-comments-admin-ext.php';
-		
 
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-serious-toxic-comments-public.php';
 		$this->loader = new Serious_Toxic_Comments_Loader();
 	}
 
@@ -110,27 +109,20 @@ class Serious_Toxic_Comments {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
 
+
 	/**
-	 * Register all of the hooks related to the admin area functionality
+	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
 	 * @access   private
 	 */
-	protected function define_admin_hooks() {
-		$plugin_admin = new Serious_Toxic_Comments_Admin_Ext( $this->get_plugin_name(), $this->get_version() );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$plugin_settings=null;
-		$plugin_settings = new Serious_Toxic_Comments_Admin_Settings( $this->get_plugin_name(), $this->get_version(),$plugin_admin );
-		$this->loader->add_action( 'admin_init', $plugin_settings, 'init_settings' ); 	// Registering also the plugin settings
-		$plugin_display = new Serious_Toxic_Comments_Admin_Display_Ext( $this->get_plugin_name(), $this->get_version(), $plugin_admin, $plugin_settings );
-		$this->loader->add_action( 'admin_menu', $plugin_display, 'init_admin_menu' ); 	// Registering also the main plugin menu
-		$this->define_additional_admin_hooks($plugin_admin);
+	protected function define_public_hooks() {
+		$plugin_public = new Serious_Toxic_Comments_Public( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->define_additional_public_hooks($plugin_public);
 	}
-	
-	protected function define_additional_admin_hooks($plugin_admin){}
-	
-
+	protected function define_additional_public_hooks($plugin_public){}
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
