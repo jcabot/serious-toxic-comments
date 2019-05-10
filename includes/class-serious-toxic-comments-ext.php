@@ -14,6 +14,9 @@
 
 class Serious_Toxic_Comments_Ext extends Serious_Toxic_Comments{
 
+	protected function define_additional_public_hooks($plugin_public){
+		$this->loader->add_action( 'wp_footer', $plugin_public, 'comment_toxicity' );
+	}
 
 
 }

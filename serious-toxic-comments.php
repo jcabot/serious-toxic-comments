@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Serious Toxic Comments
  * Plugin URI:        https://wordpress.org/plugins/serious-toxic-comments
- * Description:       Finding and merging quasi-duplicated terms
+ * Description:       Flag and block toxic comments on your site
  * Version:           1.0.0
  * Author:            Jordi Cabot
  * Author URI:        https://seriouswp.com
