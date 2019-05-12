@@ -21,7 +21,9 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
 
 	public function comment_toxicity()
 	{
-		if(is_single() && comments_open() ) {
+		$options = get_option( 'discussion' );
+	    if(is_single() && comments_open() && isset($options['toxicdetection']) ) {
+
 			?>
 
 			<script>
@@ -44,7 +46,7 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
                         let model, labels;
 
                         const classify = async (input) => {
-                            model = await toxicity.load(threshold);
+                            model = await toxicity.load(<?php echo $options['threshold']; ?>);
                             const results = await model.classify(input);
                             alert(results[0].label.concat(results[0].results[0].match.toString()));
                             alert(results[1].label.concat(results[1].results[0].match.toString()));
