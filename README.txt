@@ -35,6 +35,11 @@ We didn't. We are using a pre-trained model provided by tensorflow itself.
 
 No. The classifier is pre-trained. But you could build your own classifier based on the [code to create and train] (https://github.com/conversationai/conversationai-models/tree/master/experiments) this one
 
+= What external JavaScript scripts does the plugin import? =
+
+The plugin relies on tensorflow.js to analyze the comment on the browser. Therefore, the plugin enqueues tensorflow, the sentence encoder and the toxicity model.
+Nevertheless, the JS code to execute the actual comment classification is only added to single post pages with comments (and the toxicity settings) enabled.
+
 == Screenshots ==
 
 1. Configuration settings for the plugin

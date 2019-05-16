@@ -34,7 +34,6 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
                    commentForm.addEventListener('submit', function(event){
 
                       async function classify(input) {
-                           // Load the model. Users optionally pass in a threshold and an array of labels to include.
                           let toxic=false;
                           const model = await toxicity.load(<?php echo $threshold; ?>);
                            const results = await model.classify(input);
@@ -53,7 +52,7 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
                        const textComment = document.getElementById('comment').value;
                        classify([textComment]).then(result => {
                            if (result) {
-                              alert('Your comment has been flagged as toxic and cannot be submitted at this point. This can happen due to a variety of reasons (insults, obscenity, racism,...). Please, edit your comment and try again');
+                              alert('Your comment has been flagged as toxic and cannot be submitted as it is. This can happen due to a variety of reasons (insults, obscenity,...). Please, edit your comment and try again');
                            }
                            else  {
                                //console.log(commentForm);
