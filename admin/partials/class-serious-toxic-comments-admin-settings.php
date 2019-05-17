@@ -57,7 +57,7 @@ class Serious_Toxic_Comments_Admin_Settings{
 			 						
 		add_settings_field(
 			'threshold',
-			'Minimum confidence level to classify the comment as toxic', 
+			'Minimum confidence level to classify the comment as toxic (default: 85%)', 
 			array($this,'render_threshold_field'),
 			'discussion',
 			'toxicconfig'
@@ -80,7 +80,8 @@ class Serious_Toxic_Comments_Admin_Settings{
 		// Retrieve the full set of options
 		$options = get_option( 'settingsToxic' );
 		// Field output.
-		$value = $value = isset( $options['threshold'] ) ? $options['threshold'] : '1';
+		// Set default value for this particular option in the group
+		$value = isset( $options['threshold'] ) ? $options['threshold'] : '85';
 		echo '<input type="range" name="settingsToxic[threshold]" size="10" value="' . esc_attr( $value ).'" min="1" max="100" />';
 	}
 }

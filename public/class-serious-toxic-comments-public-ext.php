@@ -13,10 +13,13 @@
 class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
 
 	protected function define_additional_enqueue_scripts(){
-		wp_enqueue_script( 'tf', 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs', array( 'jquery' ), null, false );
-		wp_enqueue_script( 'tfencode', 'https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder', array( 'jquery' ), null, false );
-		wp_enqueue_script( 'tftox', 'https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity', array( 'jquery' ), null, false );
+		wp_enqueue_script( 'tf', plugin_dir_url( __FILE__ ) . 'js/tfjs.js', array( 'jquery' ), null, false );
+		wp_enqueue_script( 'tfencode', plugin_dir_url( __FILE__ ) . 'js/universal-sentence-encoder.js', array( 'jquery' ), null, false );
+		wp_enqueue_script( 'tftox', plugin_dir_url( __FILE__ ) . 'js/toxicity.js', array( 'jquery' ), null, false );
+
 	    //Scripts to enqueue depart from the original instructions (https://medium.com/tensorflow/text-classification-using-tensorflow-js-an-example-of-detecting-offensive-language-in-browser-e2b94e3565ce) and follow https://github.com/tensorflow/tfjs-models/commit/1c79559dc96fe1096310b5b35dc9ede1c681be87
+        // Scripts downloaded and locally enqueued. For reference, original remote locations were:
+        // https://cdn.jsdelivr.net/npm/@tensorflow/tfjs', https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder','https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity'
 
 	}
 
@@ -36,16 +39,16 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
                       async function classify(input) {
                           let toxic=false;
                           const model = await toxicity.load(<?php echo $threshold; ?>);
-                           const results = await model.classify(input);
+                          const results = await model.classify(input);
 
-                           for (const r of results) {
-                            //   alert(r.label.concat(r.results[0].match.toString()));
-                               if (r.results[0].match) {
-                                   toxic = true;
-                                   break;
-                               }
-                           }
-                           return toxic;//  alert(results[0].label.concat(results[0].results[0].match.toString()));
+                          for (const r of results) {
+                           //   alert(r.label.concat(r.results[0].match.toString()));
+                              if (r.results[0].match) {
+                                 toxic = true;
+                                 break;
+                             }
+                          }
+                          return toxic;//  alert(results[0].label.concat(results[0].results[0].match.toString()));
                       }
 
                        event.preventDefault();
