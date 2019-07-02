@@ -64,8 +64,10 @@ class Serious_Toxic_Comments_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/serious-toxic-comments-public.js', array( 'jquery' ), $this->version, false );
 		$this->define_additional_enqueue_scripts();
+		$this->define_additional_enqueue_styles();
 	}
 
 	protected function define_additional_enqueue_scripts(){}
+	protected function define_additional_enqueue_styles(){}
 }
 

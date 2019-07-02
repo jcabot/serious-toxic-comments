@@ -63,6 +63,14 @@ class Serious_Toxic_Comments_Admin_Settings{
 			'toxicconfig'
 		);
 			 						
+		add_settings_field(
+			'toxicmessage',
+			'Start checking comments', 
+			array($this,'render_toxicmessage_field'),
+			'discussion',
+			'toxicconfig'
+		);
+			 						
 	}
 		
 	
@@ -83,6 +91,14 @@ class Serious_Toxic_Comments_Admin_Settings{
 		// Set default value for this particular option in the group
 		$value = isset( $options['threshold'] ) ? $options['threshold'] : '85';
 		echo '<input type="range" name="settingsToxic[threshold]" size="10" value="' . esc_attr( $value ).'" min="1" max="100" />';
+	}
+	public function render_toxicmessage_field() {
+		// Retrieve the full set of options
+		$options = get_option( 'settingsToxic' );
+		// Field output.
+		// Set default value for this particular option in the group
+		$value = isset( $options['toxicmessage'] ) ? $options['toxicmessage'] : 'Your text has been flagged as toxic and cannot be submitted as it is. This can happen due to a variety of reasons (insults, obscenity,...). Please, edit it and try again';
+		echo '<textarea name="settingsToxic[toxicmessage]" rows="3" cols="80">' .esc_attr( $value ).' </textarea>';
 	}
 }
  		

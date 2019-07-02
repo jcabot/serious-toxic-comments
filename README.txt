@@ -14,11 +14,11 @@ Flag and block toxic comments from polluting your site with insults, threats, ob
 
 Toxic comments are becoming a major challenge to have meaningful online discussions.
 
-This plugin uses a pre-trained toxic classifier from [TensorFlow] (https://www.tensorflow.org/) to classify a comment as toxic. See more technical details on the quality of the model [here] (https://medium.com/tensorflow/text-classification-using-tensorflow-js-an-example-of-detecting-offensive-language-in-browser-e2b94e3565ce).
+This plugin uses a pre-trained toxic classifier from [TensorFlow](https://www.tensorflow.org/) to classify a comment as toxic. See more technical details on the quality of the model [here](https://medium.com/tensorflow/text-classification-using-tensorflow-js-an-example-of-detecting-offensive-language-in-browser-e2b94e3565ce).
 
 Once a comment is flagged as toxic, the comment is blocked and the plugin alerts the comment author and asks to modify the text before trying again.
 
-In the default *Settings->Discussion* page you can enable the detection of toxic comments and define the threshold confidence level for the predicition.
+In the default *Settings->Discussion* page you can enable the detection of toxic comments and define the threshold confidence level for the prediction.
 
 == Installation ==
 
