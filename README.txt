@@ -1,8 +1,8 @@
 === Serious Toxic Comments ===
 Contributors: softmodeling, seriouswp
-Tags: comments, toxic, toxicity, AI, tensorflow, insults, offensive, threats, machine learning
+Tags: comments, toxic, toxicity, AI, tensorflow, insults, offensive, threats, machine learning, bbpress, forum
 Requires at least: 4.3
-Tested up to: 5.2
+Tested up to: 5.2.2
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -47,5 +47,14 @@ Nevertheless, the JS code to execute the actual comment classification is only a
 
 == Changelog ==
 
+= 1.1 =
+* Added support for bbPress
+* Possibility to configure the warning message when a toxic comment is detected
+
 = 1.0 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 1.1 =
+* Added bbPress support and configuration of the alert toxic message

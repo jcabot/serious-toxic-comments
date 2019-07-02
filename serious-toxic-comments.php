@@ -16,7 +16,7 @@
  * Plugin Name:       Serious Toxic Comments
  * Plugin URI:        https://wordpress.org/plugins/serious-toxic-comments
  * Description:       Flag and block toxic comments on your site
- * Version:           1.0.0
+ * Version:           1.1
  * Author:            Jordi Cabot
  * Author URI:        https://seriouswp.com
  * License:           GPL-2.0+
