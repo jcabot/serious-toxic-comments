@@ -47,6 +47,9 @@ Nevertheless, the JS code to execute the actual comment classification is only a
 
 == Changelog ==
 
+= 1.1.1 =
+* Bug fix: Avoids calling bbPress functions when bbPress is not present in the site
+
 = 1.1 =
 * Added support for bbPress
 * Possibility to configure the warning message when a toxic comment is detected
@@ -55,6 +58,9 @@ Nevertheless, the JS code to execute the actual comment classification is only a
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* Bug fix: checks for the existance of bbPress in the site before calling bbPres functions
 
 = 1.1 =
 * Added bbPress support and configuration of the alert toxic message

@@ -27,7 +27,7 @@ class Serious_Toxic_Comments_Public_Ext extends Serious_Toxic_Comments_Public {
 	public function check_text_toxicity()
     {
 	    $this->comment_toxicity();
-	    $this->bbpress_toxicity();
+	    if ( class_exists( 'bbPress' ) ) {$this->bbpress_toxicity();}
 	}
 
 	public function comment_toxicity()
